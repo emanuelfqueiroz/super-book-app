@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { BookConfig } from 'src/config/book.config';
 import { BookRepository } from './repositories/book.repository';
+import { GutenbergRepository } from './repositories/gutenberg.repository';
 import { Book } from './interfaces/book.interface';
 
 
@@ -9,7 +10,9 @@ import { Book } from './interfaces/book.interface';
 export class BookService {
   constructor(
     private readonly config: BookConfig,
-    private readonly bookRepository: BookRepository
+    private readonly gutenbergRepository: GutenbergRepository,
+    private readonly bookRepository: BookRepository,
+
 
   ) { }
   async getExternalService(id: string): Promise<Book> {
@@ -35,12 +38,14 @@ export class BookService {
   }
 
   async getBook(id: string): Promise<Book> {
+
+    await this.gutenbergRepository.getContent(id);
     // Try to get from repository
     let book = await this.bookRepository.findOne(id);
 
     // If not found, get from external service and cache
     if (!book) {
-      book = await this.getExternalService(id);
+      book = await this.gutenbergRepository.getContent(id);
       if (book) {
         await this.bookRepository.save(book);
       }

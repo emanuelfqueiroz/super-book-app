@@ -29,16 +29,22 @@ export class BookController {
   }
   @Get('/book/:id')
   @Render('book')
-  async getBook(@Param('id') id: string) {
+  async getBook(@Res() res: Response, @Param('id') id: string) {
     const book = await this.service.getBook(id);
     const bookContent = await this.service.getContent(id);
    
     if (!book) {
-      throw new NotFoundException(`Book with ID ${id} not found`);
+      return res.redirect(`/books/notfound/${id}`);
     }
     return {book, bookContent};
   }
 
+  @Get('/books/notfound/:id')
+  @Render('books/notfound')
+  async notfound(@Param('id') id: string) {
+    return { title: `Book Id ${id} not found` };
+  }
+  
   @Get('/book/_partials/recent')
   async getRecentBooks(@Res() res: Response) {
     await new Promise(resolve => setTimeout(resolve, 3000));
