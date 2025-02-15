@@ -1,0 +1,30 @@
+{{! Include Bootstrap if not in layout }}
+<div class="container">
+    <h1>Super Book App</h1>
+    <p>Welcome to {{title}}</p>
+
+    <section>
+        <h3>Request a Book</h3>
+
+
+        <div class="mb-3">
+            <label for="bookId" class="form-label">Book ID</label>
+            <input type="number" id="bookId" name="bookId" class="form-control" placeholder="Enter Book ID"
+                aria-label="Book Id" inputmode="numeric" pattern="[0-9]*" value="1" />
+        </div>
+        <button id="bookRequestButton" type="button" class="btn btn-primary">Request Book</button>
+        <script>
+            document.getElementById('bookRequestButton').onclick = function (e) {
+                e.preventDefault();
+                const bookId = document.getElementById('bookId').value;
+                console.log(bookId);
+                window.location.href = '/book/' + bookId;
+            };
+        </script>
+
+        <br />
+    </section>
+
+
+</div>
+
