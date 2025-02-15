@@ -3,13 +3,13 @@
 <div class="container">
 
     <section>
-        <h3> {{book.title}}</h3>
+
         <div class="row">
-            <div class="col-md-4 "  data-aos="fade-right" data-aos-duration="1000">
+            <div class="col-md-4 " data-aos="fade-right" data-aos-duration="1000">
                 <div class="card">
                     <img src="/img/{{book.image}}" class="card-img-top" alt="Book cover for {{book.title}}">
                     <div class="card-body">
-                        {{book.description}}
+                        <p class="text text-secondary">{{book.description}}</p>
                     </div>
                     <ul class="list-group list-group-flush ">
                         {{#each (omit book 'image' 'description')}}
@@ -19,20 +19,23 @@
                         </li>
                         {{/each}}
                     </ul>
-                    <div id="book-analysis">
-                        <div class="d-flex justify-content-center">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden"></span>
-                            </div>
+
+                </div>
+                <br />
+                <div id="book-analysis">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden"></span>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="col-md-8" data-aos="fade-left" data-aos-delay="200">
-
-                <div class="reader-container position-relative" style="height: 100%; overflow-y: auto;">
+            <div class="col-md-8">
+                <h3 data-aos-duration="1200" data-aos="fade-left" data-aos-delay="200"> {{book.title}}</h3>
+                <div data-aos-duration="1500" data-aos="fade-left" data-aos-delay="200"
+                    class="reader-container position-relative" style="height: 100%; overflow-y: auto;">
                     <div class="p-4 bg-light rounded">
                         <div class="text-content" style="line-height: 1.8; font-size: 1.1rem;">
                             {{bookContent.planText}}
@@ -51,6 +54,13 @@
 
         </div>
     </section>
+    <div class="row">
+        <div class="col">
+            <div id="recent-books-container">
+
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -58,6 +68,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             loadBookAnalysis({{ book.id }});
-    }, 1000);
+    }, 100);
     });
 </script>
+<script src="/js/books.js"></script>

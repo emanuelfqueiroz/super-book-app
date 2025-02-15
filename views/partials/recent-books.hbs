@@ -1,15 +1,16 @@
-<div class="" data-aos="fade-right" data-aos-duration="1000">
-    <h4>Recent Books</h4>
+<div class="" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
+    <h4 class="text-secondary">Recent Books</h4>
+    <br/>
     <div class="row">
         {{#if books.length}}
         {{#each books}}
         <div class="col-md-2 mb-2">
-            <div class="card">
+            <div >
                 <a href="/book/{{this.id}}" class="text-decoration-none">
                     <img src="/img/{{this.image}}" class="card-img-top" alt="{{this.title}}"
-                        style="height: 100px; object-fit: contain; display: block; margin: auto;">
+                        style="height: 200px; object-fit: contain; display: block; margin: auto;">
                     <div class="card-body">
-                        <h5 class="card-title">{{this.title}}</h5>
+                        <h6 class="text text-secondary text-center">{{this.title}}</h6>
                     </div>
                 </a>
             </div>

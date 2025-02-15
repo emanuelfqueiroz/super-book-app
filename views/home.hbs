@@ -1,30 +1,64 @@
 {{! Include Bootstrap if not in layout }}
-<div class="container">
-    <h1>Super Book App</h1>
-    <p>Welcome to {{title}}</p>
 
-    <section>
-        <h3>Request a Book</h3>
+<div class="container " style="background-color: #fcfcfc;">
 
+    <div class="container-fluid px-4 py-5 my-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-start">
+                <div class="lc-block mb-4" data-aos="fade-right" data-aos-duration="1000">
+                    <div editable="rich">
+                        <h2 class="display-2 fw-bold">Level up your <span class="text-primary">Reading</span></h2>
+                    </div>
+                </div>
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <p class="fw-light">Unlock the power of storytelling with SuperBookApp, the ultimate tool for
+                        writers, students, and book enthusiasts. Whether you need a compelling book summary, a fresh
+                        plot idea, or a structured storyline, SuperBookApp delivers intelligent and engaging content in
+                        seconds.</p>
 
-        <div class="mb-3">
-            <label for="bookId" class="form-label">Book ID</label>
-            <input type="number" id="bookId" name="bookId" class="form-control" placeholder="Enter Book ID"
-                aria-label="Book Id" inputmode="numeric" pattern="[0-9]*" value="1" />
+                </div>
+
+                <div class="mb-3" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+                    <p class="lead"> Find Your Next Adventure</p>
+
+                    <form class="d-flex align-items-center">
+
+                        <div class="input-group mb-3 ">
+                            <span class="input-group-text" id="basic-addon1">Book Id:</span>
+                            <input type="number" id="bookId" name="bookId" class="form-control"
+                                placeholder="Enter Book ID" aria-label="Book Id" inputmode="numeric" pattern="[0-9]*"
+                                value="1" onfocus="this.select();" autofocus />
+                            <button id="bookRequestButton" type="submit" class="btn btn-primary"> Go </button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <img class="img-fluid" data-aos="fade-left" data-aos-duration="2000" data-aos-delay="200"
+                    src="/img/hero.jpg"
+                    style="height: 500px; object-fit: cover; border-radius: 63% 37% 54% 46% / 55% 57% 43% 45%;"
+                    alt="Hero image">
+            </div>
         </div>
-        <button id="bookRequestButton" type="button" class="btn btn-primary">Request Book</button>
-        <script>
-            document.getElementById('bookRequestButton').onclick = function (e) {
-                e.preventDefault();
-                const bookId = document.getElementById('bookId').value;
-                console.log(bookId);
-                window.location.href = '/book/' + bookId;
-            };
-        </script>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div id="recent-books-container">
 
-        <br />
-    </section>
+            </div>
+        </div>
+    </div>
 
-
+    <script>
+        document.getElementById('bookRequestButton').onclick = function (e) {
+            e.preventDefault();
+            const bookId = document.getElementById('bookId').value;
+            console.log(bookId);
+            window.location.href = '/book/' + bookId;
+        };
+    </script>
 </div>
 
+<script src="/js/books.js"></script>
