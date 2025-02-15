@@ -68,7 +68,7 @@ web_modules/
 
 # Output of 'npm pack'
 *.tgz
-.DS_Store
+*.DS_Store
 
 # Yarn Integrity file
 .yarn-integrity
