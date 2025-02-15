@@ -7,12 +7,12 @@
         <div class="row">
             <div class="col-md-4 " data-aos="fade-right" data-aos-duration="1000">
                 <div class="card">
-                    <img src="/img/{{book.image}}" class="card-img-top" alt="Book cover for {{book.title}}">
+                    <img src="{{book.image}}" class="card-img-top" alt="Book cover for {{book.title}}">
                     <div class="card-body">
                         <p class="text text-secondary">{{book.description}}</p>
                     </div>
                     <ul class="list-group list-group-flush ">
-                        {{#each (omit book 'image' 'description')}}
+                        {{#each (omit book 'image' 'description' 'content' 'id')}}
                         <li class="list-group-item ">
                             <strong class="text-capitalize text-primary">{{@key}}</strong>
                             <span class="text-dark">{{this}}</span>

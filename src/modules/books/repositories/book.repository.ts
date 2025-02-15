@@ -12,6 +12,7 @@ export class BookRepository {
   async save(book: Book): Promise<void> {
     this.cache.set(book.id, book);
   }
+  
 }
 
 export default BookRepository;

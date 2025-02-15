@@ -1,21 +1,21 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 import { BookController } from './book.controller';
 import { BookService } from './book.service';
 import { BookConfig } from '../../config/book.config';
-import { BookRepository } from './repositories/book.repository';
 import { GutenbergRepository } from './repositories/gutenberg.repository';
-import { HttpModule } from '@nestjs/axios';
-
+import { BookRepository } from './repositories/book.repository';
 
 @Module({
   imports: [
     HttpModule,
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
   ],
   controllers: [BookController],
-  providers: [BookService, BookConfig, BookRepository, GutenbergRepository],
+  providers: [
+    BookService,
+    BookConfig,
+    GutenbergRepository,
+    BookRepository
+  ],
 })
 export class BookModule {}

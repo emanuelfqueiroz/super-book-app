@@ -31,11 +31,11 @@ export class BookController {
   @Render('book')
   async getBook(@Res() res: Response, @Param('id') id: string) {
     const book = await this.service.getBook(id);
-    const bookContent = await this.service.getContent(id);
-   
+    
     if (!book) {
       return res.redirect(`/books/notfound/${id}`);
     }
+    const bookContent = await this.service.getContent(id);
     return {book, bookContent};
   }
 
